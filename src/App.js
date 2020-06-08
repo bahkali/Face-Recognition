@@ -10,6 +10,7 @@ import Clarifai from "clarifai";
 
 import "./App.css";
 import SignIn from "./components/signin/signin.component";
+import Register from "./components/register/register.component";
 
 const app = new Clarifai.App({
   apiKey: "16ca7c3e703b4dd59c73d41c929d911e",
@@ -81,9 +82,7 @@ class App extends React.Component {
       <div className="App">
         <Particles className="particles" params={particleOptions} />
         <Navigation onRouteChange={this.onRouteChange} />
-        {this.state.route === "signin" ? (
-          <SignIn onRouteChange={this.onRouteChange} />
-        ) : (
+        {this.state.route === "home" ? (
           <div>
             <Logo />
             <Rank />
@@ -96,6 +95,10 @@ class App extends React.Component {
               imageUrl={this.state.imageUrl}
             />
           </div>
+        ) : this.state.route === "signin" ? (
+          <SignIn onRouteChange={this.onRouteChange} />
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
     );
